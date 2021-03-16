@@ -1,5 +1,5 @@
 import requests
-import sys
+import os
 from datetime import datetime
 
 def lineNotifyMessage(token, msg):
@@ -16,7 +16,7 @@ def lineNotifyMessage(token, msg):
 if __name__ == "__main__":
     wd = datetime.today().isoweekday()
     if 1 <= wd && wd <= 5:
-        token = sys.argv[1]
-        message = sys.argv[2]
+        token = os.environ['LINE_NOTIFY_TOKEN']
+        message = os.environ['LINE_NOTIFY_MESSAGE']
         lineNotifyMessage(token, message)
 
